@@ -30,6 +30,10 @@
 .formGroup > input{
     height: 30px;
 }
+.formGroup > p {
+    font-weight: 600;
+    color: red;
+}
 .formGroup > label{
     font-size: large;
     font-weight: 500;

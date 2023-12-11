@@ -62,7 +62,7 @@ const Admin = () => {
             </div>
             <div className={style.formGroup}>
                 <label htmlFor="">Description:</label>
-                <textarea type="text" rows={5} value={description} onChange={(e) => setDescription(e.target.value)} />
+                <textarea type="text" rows={10} value={description} onChange={(e) => setDescription(e.target.value)} />
             </div>
             <div className={style.formGroup}>
             <button onClick={handleUpload}>{Button}</button>

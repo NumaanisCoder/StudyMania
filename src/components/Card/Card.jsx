@@ -1,16 +1,25 @@
-import React from 'react'
-import style from './CardStyle.module.css'
+import React from "react";
+import style from "./CardStyle.module.css";
 
-const Card = ({data}) => {
-    const {name, description, url} = data;
+const Card = ({ data }) => {
+  let { name, description, date, url } = data;
+  date = date.slice(0, 10);
 
   return (
     <div className={style.CardMain}>
       <h3 className={style.title}>{name}</h3>
       <p className={style.description}>{description}</p>
-      <button className={style.downloadButton}><a href={url}>Download</a></button>
+      <div className={style.date}>
+        <p>
+          <b>Date:</b>
+          {date}
+        </p>
+      </div>
+      <button className={style.downloadButton}>
+        <a href={url}>Download</a>
+      </button>
     </div>
-  )
-}
+  );
+};
 
-export default Card
+export default Card;

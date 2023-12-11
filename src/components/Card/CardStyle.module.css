@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
     border: 1px solid black;
     width: 40%;
     height: 400px;
@@ -12,28 +12,32 @@
     box-shadow: 1px 1px 3px;
     overflow: hidden;
 }
-@media (max-width: 500px) {
-    .CardMain{
-        width: 90%;
-    }
-}
 
 .description{
     text-align: left;
     padding: 10px;
-    height: 70%;
+    height: 60%;
+    font-size: larger;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
 }
 
+.date {
+    text-align: left;
+    width: 100%;
+    margin-bottom: 2px;
+    padding: 10px;
+    font-size: larger;
+}
 .downloadButton{
     background-color: black;
     padding: 10px 15px;
     border: 1px solid white;
     border-radius: 4px;
     transition: all 300ms linear;
+    font-size: larger;
 }
 .downloadButton:hover{
     filter: invert();
@@ -43,4 +47,19 @@
 .downloadButton > a{
     text-decoration: none;
     color: white;
+}
+
+@media (max-width: 500px) {
+    .CardMain{
+        width: 90%;
+    }
+    .description{
+        font-size: medium;
+    }
+    .downloadButton{
+        font-size: small;
+    }
+    .date{
+        font-size: medium;
+    }
 }

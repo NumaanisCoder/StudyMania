@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import style from './Nav.module.css';
 
 const Nav = () => {
@@ -6,8 +6,8 @@ const Nav = () => {
     <div className={style.NavMain}>
       <h3>StudyMania</h3>
       <ul className={style.NavUL}>
-        <li className={style.NavLi}><Link to="/">Home</Link></li>
-        <li className={style.NavLi}><Link to="/admin">Admin</Link></li>
+        <li className={style.NavLi}><NavLink to="/" activeClassName='active'>Home</NavLink></li>
+        <li className={style.NavLi}><NavLink to="/admin" activeClassName='active'>Admin</NavLink></li>
       </ul>
     </div>
   );

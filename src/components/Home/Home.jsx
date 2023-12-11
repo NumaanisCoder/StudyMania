@@ -16,13 +16,16 @@ const Home = () => {
 
         const downloadUrlPromises = res.items.map(async (itemRef) => {
           const metaData = await getMetadata(itemRef);
+          console.log(metaData)
           const filename = metaData.customMetadata.filename;
           const description = metaData.customMetadata.description;
+          const date = metaData.timeCreated;
 
           const url = await getDownloadURL(itemRef);
           return {
             name: filename,
             description: description,
+            date: date,
             url: url,
           };
         });

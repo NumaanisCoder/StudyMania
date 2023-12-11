@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import style from './SecurityStyle.module.css';
-import { useNavigate } from 'react-router-dom';
 import Admin from '../Admin/Admin';
 
 const Security = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
-  const navigate = useNavigate();
+
 
   useEffect(() => {
         if(sessionStorage.getItem("SUIII")){
@@ -18,9 +17,7 @@ const Security = () => {
  
 
   const login = () => {
-    console.log(process.env.PUBLIC_URL);
     const pas = process.env.REACT_APP_SS;
-    console.log(pas);
     if (password == pas) {
         sessionStorage.setItem("SUIII",16756235188224)
         setLoggedIn(true);

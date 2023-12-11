@@ -1,0 +1,46 @@
+.CardMain{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border: 1px solid black;
+    width: 40%;
+    height: 400px;
+    box-sizing: border-box;
+    padding: 6px;
+    border-radius: 6px;
+    box-shadow: 1px 1px 3px;
+    overflow: hidden;
+}
+@media (max-width: 500px) {
+    .CardMain{
+        width: 90%;
+    }
+}
+
+.description{
+    text-align: left;
+    padding: 10px;
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.downloadButton{
+    background-color: black;
+    padding: 10px 15px;
+    border: 1px solid white;
+    border-radius: 4px;
+    transition: all 300ms linear;
+}
+.downloadButton:hover{
+    filter: invert();
+
+}
+
+.downloadButton > a{
+    text-decoration: none;
+    color: white;
+}

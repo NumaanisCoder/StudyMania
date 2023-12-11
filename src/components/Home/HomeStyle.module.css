@@ -1,0 +1,21 @@
+.CardContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 30px;
+    padding: 0px 6px;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+}
+
+.CardContainer:last-child{
+    margin-bottom: 100px;
+}
+
+@media (max-width: 500px) {
+    .CardContainer{
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+}

@@ -1,0 +1,25 @@
+.NavMain{
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: linear-gradient(to right, black,#A846A0);
+    color: white;
+    padding: 15px;
+    width: 100%;
+    box-shadow: 1px 1px 8px gray;
+    position: sticky;
+    top: 0;
+}
+
+.NavUL{
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+.NavLi > a {
+    color: white;
+    font-size: large;
+    text-decoration: none;
+}

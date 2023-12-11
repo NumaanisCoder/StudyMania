@@ -1,0 +1,51 @@
+.AdminMain{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.form{
+    border: 1px solid black;
+    margin-top: 70px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    width: 80%;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: inset -1px -1px 1px ;
+}
+@media (min-width:750px) {
+    .form{
+        width: 60%;
+    }
+}
+.formGroup{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 4px 10px;
+}
+.formGroup > input{
+    height: 30px;
+}
+.formGroup > label{
+    font-size: large;
+    font-weight: 500;
+}
+.formGroup > button{
+    box-sizing: border-box;
+    background-color: black;
+    height: 35px;
+    color: white;
+    border: 1px solid white;
+    padding: 6px;
+    width: 120px;
+    border-radius: 5px;
+}
+.formGroup > button:hover{
+    cursor: pointer;
+    filter: invert();
+    transition: all 400ms linear;
+}

@@ -2,7 +2,7 @@ import React from "react";
 import style from "./CardStyle.module.css";
 
 const Card = ({ data }) => {
-  let { name, description, date, url, category } = data;
+  let { name, description, date, url, category,subject } = data;
   date = date.slice(0, 10);
 
   return (
@@ -11,8 +11,12 @@ const Card = ({ data }) => {
       <p className={style.description}>{description}</p>
       <div className={style.date}>
         <p>
-          <b>Category: </b> 
+          <b>Class/Exam: </b> 
           {category}
+        </p>
+        <p>
+          <b>Subject: </b> 
+          {subject}
         </p>
       </div>
       <div className={style.date}>

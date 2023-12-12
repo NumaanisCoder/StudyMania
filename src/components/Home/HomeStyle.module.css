@@ -17,18 +17,25 @@
     display: flex;
     justify-content: center;
     width: 100%;
+    gap: 10px;
 }
 .Filter > select{
-    border-radius: 10px;
+    border-radius: 5px;
     font-size: larger;
-    width: 80%;;
+    width: 30%;
     height: 40px;
     margin-top: 5px;
+    background-color: white;
+    font-weight: 500;
 }
 
 @media (max-width: 500px) {
     .CardContainer{
         flex-direction: column;
         flex-wrap: nowrap;
+    }
+    .Filter > select{
+        font-size: small;
+        width: 40%;
     }
 }

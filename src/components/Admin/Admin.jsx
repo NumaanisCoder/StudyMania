@@ -8,8 +8,14 @@ const Admin = () => {
   const [filename, setFilename] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
+  const [Subject, setSubject] = useState("");
   const [Button, setButton] = useState("Upload");
   const [error, seterror] = useState("");
+
+  const handleReload = () => {
+    window.location.reload();
+  };
+
   const allowedFileTypes = [
     "application/pdf",
     "application/vnd.ms-excel",
@@ -46,6 +52,7 @@ const Admin = () => {
           filename: filename,
           description: description,
           category: category,
+          subject: Subject
         },
       };
 
@@ -55,13 +62,10 @@ const Admin = () => {
 
         // Clear the form fields after successful upload
         setButton("Uploaded");
-        setFile(null);
-        setFilename("");
-        setDescription("");
-        setCategory("");
         setTimeout(() => {
-          setButton("Upload");
-        }, 1000);
+          handleReload();
+        }, 2000);
+
       } catch (error) {
         console.error("Error uploading file:", error.message);
       }
@@ -107,7 +111,7 @@ const Admin = () => {
           />
         </div>
         <div className={style.formGroup}>
-          <label htmlFor="">Category:</label>
+          <label htmlFor="">CLASS/EXAM:</label>
           <select
             name=""
             id=""
@@ -127,6 +131,35 @@ const Admin = () => {
             <option value="NEET">NEET</option>
             <option value="JEE-ADVANCE">JEE-ADVANCE</option>
             <option value="JEE-MAINS">JEE-MAINS</option>
+          </select>
+        </div>
+        <div className={style.formGroup}>
+          <label htmlFor="">Subject</label>
+          <select
+            name=""
+            id=""
+            required
+            onChange={(e) => {
+              setSubject(e.target.value);
+            }}
+          >
+            <option value="" selected>
+              Select Subject
+            </option>
+            <option value="Science">Science</option>
+            <option value="Physics">Physics</option>
+            <option value="Maths">Maths</option>
+            <option value="Chemistry">Chemistry</option>
+            <option value="Biology">Biology</option>
+            <option value="IT">IT</option>
+            <option value="Social_Science">Social Science</option>
+            <option value="English">English</option>
+            <option value="Hindi">Hindi</option>
+            <option value="Physical_Education">Physical Education</option>
+            <option value="Accountancy">Accountancy</option>
+            <option value="Economics">Economics</option>
+            <option value="Business_Studies">Business Studies</option>
+            <option value="Fine_Arts">Fine Arts</option>
           </select>
         </div>
         <div className={style.formGroup}>

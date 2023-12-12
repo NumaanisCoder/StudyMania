@@ -7,6 +7,7 @@ import style from './HomeStyle.module.css'
 const Home = () => {
   let [downloadUrls, setDownloadUrls] = useState([]);
   let [Filtered, setFiltered] = useState([]);
+  let [SubjectFilter, setSubjectFilter] = useState([]);
   const [loading, setLoading] = useState(true);
  
   useEffect(() => {
@@ -21,6 +22,7 @@ const Home = () => {
           const filename = metaData.customMetadata.filename;
           const description = metaData.customMetadata.description;
           const category = metaData.customMetadata.category;
+          const subject = metaData.customMetadata.subject;
           const date = metaData.timeCreated;
 
           const url = await getDownloadURL(itemRef);
@@ -29,7 +31,8 @@ const Home = () => {
             description: description,
             date: date,
             url: url,
-            category: category
+            category: category,
+            subject: subject
           };
         });
 
@@ -37,6 +40,7 @@ const Home = () => {
         const resolvedUrls = await Promise.all(downloadUrlPromises);
         setFiltered(resolvedUrls);
         setDownloadUrls(resolvedUrls);
+        setSubjectFilter(resolvedUrls);
         setLoading(false); // Set loading to false after data is fetched
 
       } catch (error) {
@@ -61,13 +65,14 @@ const Home = () => {
                     return item.category === selectedCategory
                 });
                 setFiltered(filtered);
+                setSubjectFilter(filtered);
                 if(selectedCategory === ''){
                     setFiltered(downloadUrls);
                 }
             }}
           >
             <option value="" selected>
-              Select Category
+              Select CLASS/EXAM
             </option>
             <option value="IX">IX</option>
             <option value="X">X</option>
@@ -77,11 +82,43 @@ const Home = () => {
             <option value="JEE-ADVANCE">JEE-ADVANCE</option>
             <option value="JEE-MAINS">JEE-MAINS</option>
           </select>
+          <select onChange={(e)=>{
+            const selectedValue = e.target.value;
+            const filterd = SubjectFilter.filter((items)=>{
+                return items.subject === selectedValue;
+            })
+            if(selectedValue === ''){
+                setFiltered(Filtered);
+            }
+            setFiltered(filterd);
+          }}>
+          <option value="" selected>
+              Select Subject
+            </option>
+            <option value="Science">Science</option>
+            <option value="Physics">Physics</option>
+            <option value="Maths">Maths</option>
+            <option value="Chemistry">Chemistry</option>
+            <option value="Biology">Biology</option>
+            <option value="IT">IT</option>
+            <option value="Social_Science">Social Science</option>
+            <option value="English">English</option>
+            <option value="Hindi">Hindi</option>
+            <option value="Physical_Education">Physical Education</option>
+            <option value="Accountancy">Accountancy</option>
+            <option value="Economics">Economics</option>
+            <option value="Business_Studies">Business Studies</option>
+            <option value="Fine_Arts">Fine Arts</option>
+          </select>
     </div>
 
     <div className={style.CardContainer}>
       {loading && <h2>Loading...</h2>}
-      {!loading && Filtered.map((value, key) => <Card key={key} data={value} />)}
+      {!loading && Filtered.length === 0 ? (
+          <h3>Sorry, no matching documents found.</h3>
+        ) : (
+          Filtered.map((value, key) => <Card key={key} data={value} />)
+        )}
     </div>
     </>
   );

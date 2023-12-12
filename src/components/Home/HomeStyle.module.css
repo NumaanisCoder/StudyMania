@@ -13,6 +13,19 @@
     margin-bottom: 100px;
 }
 
+.Filter{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.Filter > select{
+    border-radius: 10px;
+    font-size: larger;
+    width: 80%;;
+    height: 40px;
+    margin-top: 5px;
+}
+
 @media (max-width: 500px) {
     .CardContainer{
         flex-direction: column;

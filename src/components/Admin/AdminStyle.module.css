@@ -53,3 +53,6 @@
     filter: invert();
     transition: all 400ms linear;
 }
+.formGroup > select{
+    height: 30px;
+}

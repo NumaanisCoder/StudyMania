@@ -7,8 +7,15 @@ const Admin = () => {
   const [file, setFile] = useState(null);
   const [filename, setFilename] = useState("");
   const [description, setDescription] = useState("");
+  const [category, setCategory] = useState("");
   const [Button, setButton] = useState("Upload");
   const [error, seterror] = useState("");
+  const allowedFileTypes = [
+    "application/pdf",
+    "application/vnd.ms-excel",
+    "text/plain",
+    "application/msword",
+  ];
 
   const handleChange = (e) => {
     if (e.target.files[0]) {
@@ -16,14 +23,20 @@ const Admin = () => {
     }
   };
   const handleUpload = async () => {
+    const maxSizeInBytes = 50 * 1024 * 1024; // 50MB in bytes
     if (file) {
       // Check if the file size is within the limit (50MB)
-      const maxSizeInBytes = 50 * 1024 * 1024; // 50MB in bytes
-      if (file.size > maxSizeInBytes) {
+      if (!allowedFileTypes.includes(file.type)) {
+        seterror(
+          "Invalid file type. Please select a PDF, Excel, TXT, or Word document."
+        );
+        return;
+      } else if (file.size > maxSizeInBytes) {
         console.error("File size exceeds the limit (50MB).");
         seterror("Please upload file of less than 50MB");
         return;
       }
+
       setButton("Uploading");
       const storageRef = ref(storage, `documents/${file.name}`);
 
@@ -32,6 +45,7 @@ const Admin = () => {
         customMetadata: {
           filename: filename,
           description: description,
+          category: category,
         },
       };
 
@@ -44,6 +58,7 @@ const Admin = () => {
         setFile(null);
         setFilename("");
         setDescription("");
+        setCategory("");
         setTimeout(() => {
           setButton("Upload");
         }, 1000);
@@ -60,18 +75,24 @@ const Admin = () => {
         </div>
         <div className={style.formGroup}>
           <label htmlFor="file">File</label>
-          <input type="file" name="file" onChange={(e)=>{
-            handleChange(e);
-            seterror(""); 
-            }} required/>
+          <input
+            type="file"
+            name="file"
+            onChange={(e) => {
+              handleChange(e);
+              seterror("");
+            }}
+            required
+          />
         </div>
         <div className={style.formGroup}>
           <label htmlFor="">Filename:</label>
           <input
             type="text"
             value={filename}
-            onChange={(e) =>{
-            setFilename(e.target.value)}}
+            onChange={(e) => {
+              setFilename(e.target.value);
+            }}
             required
           />
         </div>
@@ -86,8 +107,33 @@ const Admin = () => {
           />
         </div>
         <div className={style.formGroup}>
+          <label htmlFor="">Category:</label>
+          <select
+            name=""
+            id=""
+            required
+            onChange={(e) => {
+              setCategory(e.target.value);
+              console.log(category);
+            }}
+          >
+            <option value="" selected>
+              Select Category
+            </option>
+            <option value="IX">IX</option>
+            <option value="X">X</option>
+            <option value="XI">XI</option>
+            <option value="XII">XII</option>
+            <option value="NEET">NEET</option>
+            <option value="JEE-ADVANCE">JEE-ADVANCE</option>
+            <option value="JEE-MAINS">JEE-MAINS</option>
+          </select>
+        </div>
+        <div className={style.formGroup}>
           <p>{error}</p>
-          <button onClick={handleUpload}>{Button}</button>
+          <button type="submit" onClick={handleUpload}>
+            {Button}
+          </button>
         </div>
       </div>
     </div>

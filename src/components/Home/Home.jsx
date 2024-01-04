@@ -81,6 +81,7 @@ const Home = () => {
             <option value="NEET">NEET</option>
             <option value="JEE-ADVANCE">JEE-ADVANCE</option>
             <option value="JEE-MAINS">JEE-MAINS</option>
+            <option value="JEE-MAINS">BTECH</option>
           </select>
           <select onChange={(e)=>{
             const selectedValue = e.target.value;
@@ -109,6 +110,7 @@ const Home = () => {
             <option value="Economics">Economics</option>
             <option value="Business_Studies">Business Studies</option>
             <option value="Fine_Arts">Fine Arts</option>
+            <option value="Combined">Combined</option>
           </select>
     </div>
 

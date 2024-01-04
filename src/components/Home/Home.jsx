@@ -15,6 +15,7 @@ const Home = () => {
   const commerceOption = ['Physical Education', 'Accountancy', 'Economics', 'Business Studies', 'Fine Arts', 'IT', 'English', 'Hindi'];
   const ScienceOption = [ 'Physics', 'Maths', 'Chemistry', 'Biology', 'IT', 'English', 'Hindi','Physical Education']
   const [subjectOptions, setsubjectOptions] = useState(['Science', 'Social Science','Hindi','English','IT','Maths']);
+  const backup = ['Science', 'Social Science','Hindi','English','IT','Maths'];
  
   useEffect(() => {
     const listDocuments = async () => {
@@ -85,7 +86,7 @@ const Home = () => {
                 else if(selectedCategory === "XI-Comm" || selectedCategory === "XII-Comm"){
                   setsubjectOptions(commerceOption);
                 }else{
-                  setsubjectOptions(subjectOptions);
+                  setsubjectOptions(backup);
                 }
             }}
           >

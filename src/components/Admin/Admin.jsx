@@ -11,6 +11,12 @@ const Admin = () => {
   const [Subject, setSubject] = useState("");
   const [Button, setButton] = useState("Upload");
   const [error, seterror] = useState("");
+  const semOptions = ['SEM 1', 'SEM 2', 'SEM 3', 'SEM 4', 'SEM 5', 'SEM 6', 'SEM 7', 'SEM 8'];
+  const classOptions = ['IX', 'X', 'XI-Sci','XI-Comm', 'XII-Sci','XII-Comm', 'NEET', 'JEE-ADVANCE', 'JEE-MAINS', 'BTECH-CSE'];
+  const JEEOptions = ["Physics","Chemistry","Maths","Phy+Chem+Math"];
+  const commerceOption = ['Physical_Education', 'Accountancy', 'Economics', 'Business_Studies', 'Fine_Arts', 'IT', 'English', 'Hindi'];
+  const ScienceOption = [ 'Physics', 'Maths', 'Chemistry', 'Biology', 'IT', 'English', 'Hindi']
+  const [subjectOptions, setsubjectOptions] = useState(['Science', 'Physics', 'Maths', 'Chemistry', 'Biology', 'IT', 'Social_Science', 'English', 'Hindi', 'Physical_Education', 'Accountancy', 'Economics', 'Business_Studies', 'Fine_Arts', 'Combined']);
 
   const handleReload = () => {
     window.location.reload();
@@ -118,19 +124,28 @@ const Admin = () => {
             required
             onChange={(e) => {
               setCategory(e.target.value);
+              const selectedCategory = e.target.value;
+              if(selectedCategory === "BTECH-CSE"){
+                setsubjectOptions(semOptions);
+               }else if(selectedCategory === "JEE-MAINS" || selectedCategory === "JEE-ADVANCE"){
+                 setsubjectOptions(JEEOptions);
+               }else if(selectedCategory === "XI-Sci" || selectedCategory === "XII-Sci"){
+                 setsubjectOptions(ScienceOption);
+               }
+               else if(selectedCategory === "XI-Comm" || selectedCategory === "XII-Comm"){
+                 setsubjectOptions(commerceOption);
+               }else{
+                 setsubjectOptions(subjectOptions);
+               }
               console.log(category);
             }}
           >
             <option value="" selected>
-              Select Category
+              Select CLASS/EXAM
             </option>
-            <option value="IX">IX</option>
-            <option value="X">X</option>
-            <option value="XI">XI</option>
-            <option value="XII">XII</option>
-            <option value="NEET">NEET</option>
-            <option value="JEE-ADVANCE">JEE-ADVANCE</option>
-            <option value="JEE-MAINS">JEE-MAINS</option>
+            {classOptions.map((value,index)=>(
+              <option value={value}>{value}</option>
+            ))}
           </select>
         </div>
         <div className={style.formGroup}>
@@ -143,23 +158,12 @@ const Admin = () => {
               setSubject(e.target.value);
             }}
           >
-            <option value="" selected>
-              Select Subject
+             <option value="" selected>
+              Select Subject/Semester
             </option>
-            <option value="Science">Science</option>
-            <option value="Physics">Physics</option>
-            <option value="Maths">Maths</option>
-            <option value="Chemistry">Chemistry</option>
-            <option value="Biology">Biology</option>
-            <option value="IT">IT</option>
-            <option value="Social_Science">Social Science</option>
-            <option value="English">English</option>
-            <option value="Hindi">Hindi</option>
-            <option value="Physical_Education">Physical Education</option>
-            <option value="Accountancy">Accountancy</option>
-            <option value="Economics">Economics</option>
-            <option value="Business_Studies">Business Studies</option>
-            <option value="Fine_Arts">Fine Arts</option>
+            {subjectOptions.map((value,index)=>(
+              <option value={value}>{value}</option>
+            ))}
           </select>
         </div>
         <div className={style.formGroup}>

@@ -12,9 +12,9 @@ const Home = () => {
   const semOptions = ['SEM 1', 'SEM 2', 'SEM 3', 'SEM 4', 'SEM 5', 'SEM 6', 'SEM 7', 'SEM 8'];
   const classOptions = ['IX', 'X', 'XI-Sci','XI-Comm', 'XII-Sci','XII-Comm', 'NEET', 'JEE-ADVANCE', 'JEE-MAINS', 'BTECH-CSE'];
   const JEEOptions = ["Physics","Chemistry","Maths","Phy+Chem+Math"];
-  const commerceOption = ['Physical_Education', 'Accountancy', 'Economics', 'Business_Studies', 'Fine_Arts', 'IT', 'English', 'Hindi'];
-  const ScienceOption = [ 'Physics', 'Maths', 'Chemistry', 'Biology', 'IT', 'English', 'Hindi']
-  const [subjectOptions, setsubjectOptions] = useState(['Science', 'Physics', 'Maths', 'Chemistry', 'Biology', 'IT', 'Social_Science', 'English', 'Hindi', 'Physical_Education', 'Accountancy', 'Economics', 'Business_Studies', 'Fine_Arts', 'Combined']);
+  const commerceOption = ['Physical Education', 'Accountancy', 'Economics', 'Business Studies', 'Fine Arts', 'IT', 'English', 'Hindi'];
+  const ScienceOption = [ 'Physics', 'Maths', 'Chemistry', 'Biology', 'IT', 'English', 'Hindi','Physical Education']
+  const [subjectOptions, setsubjectOptions] = useState(['Science', 'Social Science','Hindi','English','IT','Maths']);
  
   useEffect(() => {
     const listDocuments = async () => {

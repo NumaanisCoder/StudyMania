@@ -20,9 +20,6 @@ const Admin = () => {
   const [subjectOptions, setsubjectOptions] = useState(['Science', 'Social Science','Hindi','English','IT','Maths',"Question Paper"]);
   const backup = ['Science', 'Social Science','Hindi','English','IT','Maths',"Question Paper"];
 
-  const handleReload = () => {
-    window.location.reload();
-  };
 
   const allowedFileTypes = [
     "application/pdf",
@@ -70,9 +67,6 @@ const Admin = () => {
 
         // Clear the form fields after successful upload
         setButton("Uploaded");
-        setTimeout(() => {
-          handleReload();
-        }, 2000);
 
       } catch (error) {
         console.error("Error uploading file:", error.message);

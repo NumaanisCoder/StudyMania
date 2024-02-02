@@ -11,13 +11,14 @@ const Admin = () => {
   const [Subject, setSubject] = useState("");
   const [Button, setButton] = useState("Upload");
   const [error, seterror] = useState("");
-  const semOptions = ['SEM 1', 'SEM 2', 'SEM 3', 'SEM 4', 'SEM 5', 'SEM 6', 'SEM 7', 'SEM 8'];
+  const semOptions = ['SEM 1', 'SEM 2', 'SEM 3', 'SEM 4', 'SEM 5', 'SEM 6', 'SEM 7', 'SEM 8',"Question Paper"];
+  const neetOptions = ["Physics","Chemistry","Biology","Phy+Chem+Bio", "Question Paper"] ;
   const classOptions = ['IX', 'X', 'XI-Sci','XI-Comm', 'XII-Sci','XII-Comm', 'NEET', 'JEE-ADVANCE', 'JEE-MAINS', 'BTECH-CSE'];
-  const JEEOptions = ["Physics","Chemistry","Maths","Phy+Chem+Math"];
-  const commerceOption = ['Physical Education', 'Accountancy', 'Economics', 'Business Studies', 'Fine Arts', 'IT', 'English', 'Hindi'];
-  const ScienceOption = [ 'Physics', 'Maths', 'Chemistry', 'Biology', 'IT', 'English', 'Hindi','Physical Education']
-  const [subjectOptions, setsubjectOptions] = useState(['Science', 'Social Science','Hindi','English','IT','Maths']);
-  const backup = ['Science', 'Social Science','Hindi','English','IT','Maths'];
+  const JEEOptions = ["Physics","Chemistry","Maths","Phy+Chem+Math","Question Paper"];
+  const commerceOption = ['Physical Education', 'Accountancy', 'Economics', 'Business Studies', 'Fine Arts', 'IT', 'English', 'Hindi',"Question Paper"];
+  const ScienceOption = [ 'Physics', 'Maths', 'Chemistry', 'Biology', 'IT', 'English', 'Hindi','Physical Education',"Question Paper"]
+  const [subjectOptions, setsubjectOptions] = useState(['Science', 'Social Science','Hindi','English','IT','Maths',"Question Paper"]);
+  const backup = ['Science', 'Social Science','Hindi','English','IT','Maths',"Question Paper"];
 
   const handleReload = () => {
     window.location.reload();
@@ -135,7 +136,10 @@ const Admin = () => {
                }
                else if(selectedCategory === "XI-Comm" || selectedCategory === "XII-Comm"){
                  setsubjectOptions(commerceOption);
-               }else{
+               }else if(selectedCategory === "NEET"){
+                setsubjectOptions(neetOptions);
+               }
+               else{
                  setsubjectOptions(backup);
                }
               console.log(category);
